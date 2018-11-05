@@ -1,0 +1,11 @@
+{
+    "bin": ["bin/brain-games"],
+    "name": "potapov/project-lvl1-s372",
+    "authors": [
+        {
+            "name": "Mikhail Potapov",
+            "email": "mihal_palich.93@mail.ru"
+        }
+    ],
+    "require": {}
+}
