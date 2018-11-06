@@ -1,6 +1,12 @@
 {
     "bin": ["bin/brain-games"],
     "name": "potapov/project-lvl1-s372",
+    "type": "library",
+    "description":"Small console game",
+    "keywords": [
+        "game",
+        "console"
+    ],
     "authors": [
         {
             "name": "Mikhail Potapov",
