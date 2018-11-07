@@ -10,3 +10,6 @@
 ## Run
 [![asciicast](https://asciinema.org/a/nhmQBHVnSNEjYOOZCgxIm1Ayf.png)](https://asciinema.org/a/nhmQBHVnSNEjYOOZCgxIm1Ayf?speed=2&size=medium)
 
+## brain-even
+[![asciicast](https://asciinema.org/a/9UPvY7DboFrUXq46a13jWRsox.png)](https://asciinema.org/a/9UPvY7DboFrUXq46a13jWRsox?speed=4&size=medium)
+
