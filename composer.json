@@ -4,7 +4,7 @@
         "bin/brain-even"
     ],
     "name": "potapov/project-lvl1-s372",
-    "type": "library",
+    "type": "project",
     "description":"Small console game",
     "keywords": [
         "game",
