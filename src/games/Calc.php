@@ -8,9 +8,14 @@ const OPERATIONS = ['-', '+', '*'];
 
 function run()
 {
-    $num1 = function(){return rand(1, 10);};
+    $num1 = function () {
+        return rand(1, 10);
+    };
     $num2 = $num1;
-    $operation = function(){return OPERATIONS[array_rand(OPERATIONS)];};
+
+    $operation = function () {
+            return OPERATIONS[array_rand(OPERATIONS)];
+    };
 
     $question[] = $num1;
     $question[] = $operation;
