@@ -11,13 +11,18 @@ function run()
 {
     $question[] = function(){return rand(1, 100);};
 
-    game(function ($answer, $number) {
-        $rightAnswer = $number % 2 === 0 ? ANSWER_POSITIVE : ANSWER_NEGATIVE;
+    game(function ($userAnswer, $checkedNumber) {
+        $rightAnswer =  isEven($checkedNumber) ? ANSWER_POSITIVE : ANSWER_NEGATIVE;
 
         return [
-            'right'        => strcasecmp($rightAnswer, $answer) == 0 ? true : false,
+            'right'        => strcasecmp($rightAnswer, $userAnswer) == 0 ? true : false,
             'right_answer' => $rightAnswer
         ];
 
     }, $question);
+}
+
+function isEven($number)
+{
+    return  $number % 2 === 0 ? true : false;
 }

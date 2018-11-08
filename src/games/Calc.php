@@ -16,12 +16,12 @@ function run()
     $question[] = $operation;
     $question[] = $num2;
 
-    game(function ($answer, $rightAnswer) {
-        $answer      = (int)$answer;
+    game(function ($userAnswer, $rightAnswer) {
+        $userAnswer  = (int)$userAnswer;
         $rightAnswer = (int)$rightAnswer;
 
         return [
-            'right'        => $rightAnswer === $answer ? true : false,
+            'right'        => $rightAnswer === $userAnswer ? true : false,
             'right_answer' => $rightAnswer
         ];
 

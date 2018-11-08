@@ -20,8 +20,7 @@ function game($logicGame, $question)
 {
     $name = run();
 
-    $flag = 3;
-    while ($flag) {
+    for ($i = 0; $i < 3; $i++) {
         $questionCalculate = array_map(function ($item) {
             if (is_callable($item)) {
                 return $item();
@@ -31,30 +30,26 @@ function game($logicGame, $question)
         }, $question);
 
 
-        $questionStr = implode(' ', $questionCalculate);
-        $number      = eval("return {$questionStr};");
+        $questionStr   = implode(' ', $questionCalculate);
+        $checkedNumber = eval("return {$questionStr};");
         line("Question: {$questionStr}");
 
-        $answer = prompt('Your answer');
-        line("Your answer: %s!", $answer);
+        $userAnswer = prompt('Your answer');
+        line("Your answer: %s!", $userAnswer);
 
-        $result = $logicGame($answer, $number);
+        $result = $logicGame($userAnswer, $checkedNumber);
 
         if (array_key_exists('right', $result) && $result['right'] === true) {
             line("Correct!");
         } elseif (array_key_exists('right_answer', $result)) {
-            line('\'%s\' is wrong answer ;(. Correct answer was \'%s\'.', $answer, $result['right_answer']);
+            line('\'%s\' is wrong answer ;(. Correct answer was \'%s\'.', $userAnswer, $result['right_answer']);
             line('Let\'s try again, %s!', $name);
-            break;
+            return;
         } else {
             line('Error: bad request from game!');
-            return false;
-        }
-
-        $flag --;
-
-        if ($flag === 0) {
-            line('Congratulations, %s!', $name);
+            return;
         }
     }
+
+    line('Congratulations, %s!', $name);
 }
