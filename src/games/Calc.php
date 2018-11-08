@@ -29,7 +29,5 @@ function run()
             'right'        => $rightAnswer === $userAnswer ? true : false,
             'right_answer' => $rightAnswer
         ];
-
     }, $question);
 }
-
