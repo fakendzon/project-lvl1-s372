@@ -2,7 +2,8 @@
     "bin": [
         "bin/brain-games",
         "bin/brain-even",
-        "bin/brain-calc"
+        "bin/brain-calc",
+        "bin/brain-gcd"
     ],
     "name": "potapov/project-lvl1-s372",
     "type": "project",
@@ -24,7 +25,8 @@
         "files": [
             "src/Cli.php",
             "src/games/Even.php",
-            "src/games/Calc.php"
+            "src/games/Calc.php",
+            "src/games/Gcd.php"
         ]
     },
     "require": {
