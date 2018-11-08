@@ -2,41 +2,22 @@
 
 namespace BrainGames\Games\Even;
 
-use function \cli\line;
-use function \cli\prompt;
+use function BrainGames\Cli\game;
 
 const ANSWER_POSITIVE = 'yes';
 const ANSWER_NEGATIVE = 'no';
 
-function even($name = 'noname')
+function run()
 {
-    $flag = 3;
-    while ($flag) {
-        $number = rand(1, 1000);
-        line("Question: {$number}");
+    $question[] = function(){return rand(1, 100);};
 
-        $answer      = prompt('Your answer');
-        $rightAnswer = getRightAnswer($number);
+    game(function ($answer, $number) {
+        $rightAnswer = $number % 2 === 0 ? ANSWER_POSITIVE : ANSWER_NEGATIVE;
 
-        line("Your answer: %s!", $answer);
+        return [
+            'right'        => strcasecmp($rightAnswer, $answer) == 0 ? true : false,
+            'right_answer' => $rightAnswer
+        ];
 
-        if (strcasecmp($rightAnswer, $answer) == 0) {
-            line("Correct!");
-        } else {
-            line('\'%s\' is wrong answer ;(. Correct answer was \'%s\'.', $answer, $rightAnswer);
-            line('Let\'s try again, %s!', $name);
-            break;
-        }
-
-        $flag --;
-
-        if ($flag === 0) {
-            line('Congratulations, %s!', $name);
-        }
-    }
-}
-
-function getRightAnswer($number)
-{
-    return $number % 2 === 0 ? ANSWER_POSITIVE : ANSWER_NEGATIVE;
+    }, $question);
 }

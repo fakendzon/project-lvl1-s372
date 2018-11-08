@@ -10,5 +10,4 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-$name = \BrainGames\Cli\run();
-\BrainGames\Games\even($name);
+\BrainGames\Games\Even\run();

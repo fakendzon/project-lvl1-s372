@@ -2,41 +2,29 @@
 
 namespace BrainGames\Games\Calc;
 
-use function \cli\line;
-use function \cli\prompt;
+use function BrainGames\Cli\game;
 
-const ANSWER_POSITIVE = 'yes';
-const ANSWER_NEGATIVE = 'no';
+const OPERATIONS = ['-', '+', '*'];
 
-function calc($name = 'noname')
+function run()
 {
-    $flag = 3;
-    while ($flag) {
-        $number = rand(1, 1000);
-        line("Question: {$number}");
+    $num1 = function(){return rand(1, 10);};
+    $num2 = $num1;
+    $operation = function(){return OPERATIONS[array_rand(OPERATIONS)];};
 
-        $answer      = prompt('Your answer');
-        $rightAnswer = getRightAnswer($number);
+    $question[] = $num1;
+    $question[] = $operation;
+    $question[] = $num2;
 
-        line("Your answer: %s!", $answer);
+    game(function ($answer, $rightAnswer) {
+        $answer      = (int)$answer;
+        $rightAnswer = (int)$rightAnswer;
 
-        if (strcasecmp($rightAnswer, $answer) == 0) {
-            line("Correct!");
-        } else {
-            line('\'%s\' is wrong answer ;(. Correct answer was \'%s\'.', $answer, $rightAnswer);
-            line('Let\'s try again, %s!', $name);
-            break;
-        }
+        return [
+            'right'        => $rightAnswer === $answer ? true : false,
+            'right_answer' => $rightAnswer
+        ];
 
-        $flag --;
-
-        if ($flag === 0) {
-            line('Congratulations, %s!', $name);
-        }
-    }
+    }, $question);
 }
 
-function getRightAnswer($number)
-{
-    return $number % 2 === 0 ? ANSWER_POSITIVE : ANSWER_NEGATIVE;
-}
