@@ -3,29 +3,24 @@
 namespace BrainGames\Games\Gcd;
 
 use function BrainGames\Cli\game;
+use function BrainGames\Cli\welcome;
+use function \cli\line;
 
 function run()
 {
-    $num1 = function () {
-        return rand(1, 10);
+    welcome();
+    line("Find the greatest common divisor of given numbers.");
+
+    $generateQuestion = function () {
+        $num1      = rand(1, 10);
+        $num2      = rand(1, 10);
+        return "{$num1} {$num2}";
     };
-    $num2 = $num1;
 
-    $question[] = $num1;
-    $question[] = $num2;
+    $getRightAnswer = function ($question) {
+        $question = explode(' ', $question);
+        return gmp_intval(gmp_gcd($question[0], $question[1]));
+    };
 
-    game(function ($userAnswer, $checkedValues) {
-        $userAnswer  = (int)$userAnswer;
-
-        $checkedValues = array_map(function ($value) {
-            return (int)$value;
-        }, $checkedValues);
-
-        $rightAnswer = gmp_intval(gmp_gcd($checkedValues[0], $checkedValues[1]));
-
-        return [
-            'right'        => $rightAnswer === $userAnswer ? true : false,
-            'right_answer' => $rightAnswer
-        ];
-    }, $question);
+    game($getRightAnswer, $generateQuestion);
 }

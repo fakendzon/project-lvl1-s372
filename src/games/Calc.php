@@ -3,31 +3,26 @@
 namespace BrainGames\Games\Calc;
 
 use function BrainGames\Cli\game;
+use function BrainGames\Cli\welcome;
+use function \cli\line;
 
 const OPERATIONS = ['-', '+', '*'];
 
 function run()
 {
-    $num1 = function () {
-        return rand(1, 10);
+    welcome();
+    line("What is the result of the expression?");
+
+    $generateQuestion = function () {
+        $num1      = rand(1, 10);
+        $num2      = rand(1, 10);
+        $operation = OPERATIONS[array_rand(OPERATIONS)];
+        return "{$num1} {$operation} {$num2}";
     };
-    $num2 = $num1;
 
-    $operation = function () {
-            return OPERATIONS[array_rand(OPERATIONS)];
+    $getRightAnswer = function ($question) {
+        return eval("return {$question};");
     };
 
-    $question[] = $num1;
-    $question[] = $operation;
-    $question[] = $num2;
-
-    game(function ($userAnswer, $rightAnswer) {
-        $userAnswer  = (int)$userAnswer;
-        $rightAnswer = (int)$rightAnswer;
-
-        return [
-            'right'        => $rightAnswer === $userAnswer ? true : false,
-            'right_answer' => $rightAnswer
-        ];
-    }, $question);
+    game($getRightAnswer, $generateQuestion);
 }

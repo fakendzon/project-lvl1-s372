@@ -3,27 +3,29 @@
 namespace BrainGames\Games\Even;
 
 use function BrainGames\Cli\game;
+use function BrainGames\Cli\welcome;
+use function \cli\line;
 
 const ANSWER_POSITIVE = 'yes';
 const ANSWER_NEGATIVE = 'no';
 
 function run()
 {
-    $question[] = function () {
-        return rand(1, 100);
+    welcome();
+    line("Find the greatest common divisor of given numbers.");
+
+    $generateQuestion = function () {
+        return rand(1, 10);
     };
 
-    game(function ($userAnswer, $checkedNumber) {
-        $rightAnswer =  isEven($checkedNumber) ? ANSWER_POSITIVE : ANSWER_NEGATIVE;
+    $getRightAnswer = function ($question) {
+        return isEven($question) ? ANSWER_POSITIVE : ANSWER_NEGATIVE;
+    };
 
-        return [
-            'right'        => strcasecmp($rightAnswer, $userAnswer) == 0 ? true : false,
-            'right_answer' => $rightAnswer
-        ];
-    }, $question);
+    game($getRightAnswer, $generateQuestion);
 }
 
 function isEven($number)
 {
-    return  $number % 2 === 0 ? true : false;
+    return  $number % 2 === 0;
 }
