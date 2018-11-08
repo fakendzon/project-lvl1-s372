@@ -1,7 +1,8 @@
 {
     "bin": [
         "bin/brain-games",
-        "bin/brain-even"
+        "bin/brain-even",
+        "bin/brain-calc"
     ],
     "name": "potapov/project-lvl1-s372",
     "type": "project",
