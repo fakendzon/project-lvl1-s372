@@ -19,6 +19,7 @@ function run()
 function toBalance($num)
 {
     $numbers = str_split($num);
+    sort($numbers);
 
     while (true) {
         if (abs($numbers[0] - $numbers[count($numbers) - 1]) <= 1) {
