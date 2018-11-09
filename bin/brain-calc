@@ -11,6 +11,3 @@ if (file_exists($autoloadPath1)) {
 }
 
 \BrainGames\Games\Calc\run();
-
-
-

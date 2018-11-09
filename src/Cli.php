@@ -13,18 +13,18 @@ function run()
     askUserName();
 }
 
-function game($getRightAnswer, $generateQuestion)
+function game($generateQuestion, $descriptionGame)
 {
+    welcome();
+    line($descriptionGame);
     $name = askUserName();
 
     for ($i = 0; $i < QUESTIONS_COUNT; $i++) {
-        $question = $generateQuestion();
+        [$question, $rightAnswer] = $generateQuestion();
         line("Question: {$question}");
 
         $userAnswer = prompt('Your answer');
         line("Your answer: %s!", $userAnswer);
-
-        $rightAnswer = $getRightAnswer($question);
 
         if ($rightAnswer == $userAnswer) {
             line("Correct!");
