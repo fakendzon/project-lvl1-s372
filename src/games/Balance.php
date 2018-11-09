@@ -8,12 +8,12 @@ const DESCRIPTION = "Balance the given number.";
 
 function run()
 {
-    $generateQuestion = function () {
+    $generateQuestionAndAnswer = function () {
         $num       = rand(1, 10000);
         return [$num, toBalance($num)];
     };
 
-    game($generateQuestion, DESCRIPTION);
+    game($generateQuestionAndAnswer, DESCRIPTION);
 }
 
 function toBalance($num)

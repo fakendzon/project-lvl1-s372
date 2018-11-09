@@ -4,18 +4,32 @@ namespace BrainGames\Games\Calc;
 
 use function BrainGames\Cli\game;
 
-const OPERATIONS  = ['-', '+', '*'];
 const DESCRIPTION = "What is the result of the expression?";
 
 function run()
 {
-    $generateQuestion = function () {
+    $generateQuestionAndAnswer = function () {
         $num1      = rand(1, 10);
         $num2      = rand(1, 10);
-        $operation = OPERATIONS[array_rand(OPERATIONS)];
+
+        $operations = [
+            '-' => function ($num1, $num2) {
+                return $num1 - $num2;
+            },
+            '+' => function ($num1, $num2) {
+                return $num1 + $num2;
+            },
+            '*' => function ($num1, $num2) {
+                return $num1 * $num2;
+            },
+        ];
+
+        $previewOperations = array_keys($operations);
+        $operation = $previewOperations[array_rand($previewOperations)];
         $question  = "{$num1} {$operation} {$num2}";
-        return [$question, eval("return {$question};")];
+
+        return [$question, $operations[$operation]($num1, $num2)];
     };
 
-    game($generateQuestion, DESCRIPTION);
+    game($generateQuestionAndAnswer, DESCRIPTION);
 }

@@ -13,14 +13,14 @@ function run()
     askUserName();
 }
 
-function game($generateQuestion, $descriptionGame)
+function game($generateQuestionAndAnswer, $descriptionGame)
 {
     welcome();
     line($descriptionGame);
     $name = askUserName();
 
     for ($i = 0; $i < QUESTIONS_COUNT; $i++) {
-        [$question, $rightAnswer] = $generateQuestion();
+        [$question, $rightAnswer] = $generateQuestionAndAnswer();
         line("Question: {$question}");
 
         $userAnswer = prompt('Your answer');
