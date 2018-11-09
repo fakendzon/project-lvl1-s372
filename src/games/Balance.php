@@ -4,16 +4,16 @@ namespace BrainGames\Games\Balance;
 
 use function BrainGames\Cli\game;
 
+const DESCRIPTION = "Balance the given number.";
+
 function run()
 {
-    $description = "Balance the given number.";
-
     $generateQuestion = function () {
         $num       = rand(1, 10000);
         return [$num, toBalance($num)];
     };
 
-    game($generateQuestion, $description);
+    game($generateQuestion, DESCRIPTION);
 }
 
 function toBalance($num)

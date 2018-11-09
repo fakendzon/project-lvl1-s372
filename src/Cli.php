@@ -24,7 +24,6 @@ function game($generateQuestion, $descriptionGame)
         line("Question: {$question}");
 
         $userAnswer = prompt('Your answer');
-        line("Your answer: %s!", $userAnswer);
 
         if ($rightAnswer == $userAnswer) {
             line("Correct!");
