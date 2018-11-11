@@ -28,6 +28,7 @@
         "files": [
             "src/Cli.php",
             "src/Welcome.php",
+            "src/PropertiesNumber.php",
             "src/games/Even.php",
             "src/games/Prime.php",
             "src/games/Calc.php",
