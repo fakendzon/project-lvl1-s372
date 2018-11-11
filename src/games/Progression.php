@@ -11,17 +11,25 @@ function run()
 {
 
     $generateQuestionAndAnswer = function () {
-        $start = rand(1, 100);
-        $step  = rand(1, 10);
+        $step           = rand(1, 10);
+        $iteration      = rand(1, 100);
+        $secret         = rand(1, PROGRESSION_LEN);
+        $progression[0] = $iteration;
 
         for ($i = 0; $i < PROGRESSION_LEN; $i++) {
-            if () {
+            $iteration += $step;
 
+            if ($i == $secret) {
+                $progression[] = '..';
+                $rightAnswer   = $iteration;
+                continue;
             }
+
+            $progression[] = $iteration;
         }
 
-        $question  = "{$num1} {$num2}";
-        return [$question, gmp_intval(gmp_gcd($num1, $num2))];
+        $question  = implode(' ', $progression);
+        return [$question, $rightAnswer];
     };
 
     game($generateQuestionAndAnswer, DESCRIPTION);
