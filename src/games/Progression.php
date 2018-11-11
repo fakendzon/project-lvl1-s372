@@ -14,13 +14,13 @@ function run()
         $step                  = rand(1, 10);
         $start                 = rand(1, 100);
         $hiddenElementPosition = rand(1, PROGRESSION_LENGTH);
+        $rightAnswer           = $start + $hiddenElementPosition * $step;
 
         for ($i = 1; $i <= PROGRESSION_LENGTH; $i++) {
             $currentElement = $start + $i * $step;
 
             if ($i == $hiddenElementPosition) {
                 $progression[] = '..';
-                $rightAnswer   = $currentElement;
                 continue;
             }
 

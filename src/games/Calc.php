@@ -10,14 +10,15 @@ const OPERATIONS  = ['-' => 'minus', '+' => 'plus', '*' => 'multiplication'];
 function run()
 {
     $generateQuestionAndAnswer = function () {
-        $num1      = rand(1, 10);
-        $num2      = rand(1, 10);
+        $num1 = rand(1, 10);
+        $num2 = rand(1, 10);
 
         $previewOperations = array_keys(OPERATIONS);
-        $operation = $previewOperations[array_rand($previewOperations)];
-        $question  = "{$num1} {$operation} {$num2}";
+        $operation         = $previewOperations[array_rand($previewOperations)];
+        $question          = "{$num1} {$operation} {$num2}";
+        $rightAnswer       = call_user_func(__NAMESPACE__ . '\\' . OPERATIONS[$operation], $num1, $num2);
 
-        return [$question, call_user_func(__NAMESPACE__ . '\\' . OPERATIONS[$operation], $num1, $num2)];
+        return [$question, $rightAnswer];
     };
 
     game($generateQuestionAndAnswer, DESCRIPTION);

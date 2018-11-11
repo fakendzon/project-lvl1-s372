@@ -9,7 +9,7 @@ const DESCRIPTION = "Balance the given number.";
 function run()
 {
     $generateQuestionAndAnswer = function () {
-        $num       = rand(1, 10000);
+        $num = rand(1, 10000);
         return [$num, toBalance($num)];
     };
 
