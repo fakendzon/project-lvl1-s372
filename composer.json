@@ -2,6 +2,7 @@
     "bin": [
         "bin/brain-games",
         "bin/brain-even",
+        "bin/brain-prime",
         "bin/brain-calc",
         "bin/brain-gcd",
         "bin/brain-balance",
@@ -28,6 +29,7 @@
             "src/Cli.php",
             "src/Welcome.php",
             "src/games/Even.php",
+            "src/games/Prime.php",
             "src/games/Calc.php",
             "src/games/Gcd.php",
             "src/games/Balance.php",
