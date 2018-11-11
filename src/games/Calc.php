@@ -17,7 +17,7 @@ function run()
         $operation = $previewOperations[array_rand($previewOperations)];
         $question  = "{$num1} {$operation} {$num2}";
 
-        return [$question, call_user_func(__NAMESPACE__.'\\'.OPERATIONS[$operation], $num1, $num2)];
+        return [$question, call_user_func(__NAMESPACE__ . '\\' . OPERATIONS[$operation], $num1, $num2)];
     };
 
     game($generateQuestionAndAnswer, DESCRIPTION);

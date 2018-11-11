@@ -26,6 +26,7 @@
     "autoload": {
         "files": [
             "src/Cli.php",
+            "src/Welcome.php",
             "src/games/Even.php",
             "src/games/Calc.php",
             "src/games/Gcd.php",

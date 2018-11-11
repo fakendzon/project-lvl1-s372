@@ -7,12 +7,6 @@ use function \cli\prompt;
 
 const QUESTIONS_COUNT = 3;
 
-function run()
-{
-    welcome();
-    askUserName();
-}
-
 function game($generateQuestionAndAnswer, $descriptionGame)
 {
     welcome();
