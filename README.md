@@ -21,3 +21,6 @@
 
 ## brain-balance
 [![asciicast](https://asciinema.org/a/As3Skabk8YOo4NtqsoL5kRSOC.png)](https://asciinema.org/a/As3Skabk8YOo4NtqsoL5kRSOC?speed=4&size=medium)
+
+## brain-progression
+[![asciicast](https://asciinema.org/a/zYVEG0MazuIiNbgfX3Bg52kxi.png)](https://asciinema.org/a/zYVEG0MazuIiNbgfX3Bg52kxi?speed=4&size=medium)
