@@ -12,11 +12,10 @@ const DESCRIPTION  = 'Answer "yes" if given number is prime. Otherwise answer "n
 function run()
 {
     $generateQuestionAndAnswer = function () {
-        $num = rand(1, 100);
-        return [
-            $num,
-            isPrime($num) ? ANSWER_POSITIVE : ANSWER_NEGATIVE
-        ];
+        $verifiableNumber = rand(1, 100);
+        $answer           = isPrime($verifiableNumber) ? ANSWER_POSITIVE : ANSWER_NEGATIVE;
+
+        return [$verifiableNumber, $answer];
     };
 
     game($generateQuestionAndAnswer, DESCRIPTION);
@@ -24,7 +23,7 @@ function run()
 
 function isPrime($number)
 {
-    if ($number == 1) {
+    if ($number <= 1) {
         return false;
     }
 

@@ -14,9 +14,9 @@ function run()
         $num2        = rand(1, 10);
         $operation   = OPERATIONS[array_rand(OPERATIONS)];
         $question    = "{$num1} {$operation} {$num2}";
-        $rightAnswer = calculateAnswer($operation, $num1, $num2);
+        $answer      = calculateAnswer($operation, $num1, $num2);
 
-        return [$question, $rightAnswer];
+        return [$question, $answer];
     };
 
     game($generateQuestionAndAnswer, DESCRIPTION);

@@ -12,11 +12,10 @@ const DESCRIPTION = 'Answer "yes" if number even otherwise answer "no".';
 function run()
 {
     $generateQuestionAndAnswer = function () {
-        $num = rand(1, 100);
-        return [
-            $num,
-            isEven($num) ? ANSWER_POSITIVE : ANSWER_NEGATIVE
-        ];
+        $verifiableNumber = rand(1, 100);
+        $answer           = isEven($verifiableNumber) ? ANSWER_POSITIVE : ANSWER_NEGATIVE;
+
+        return [$verifiableNumber, $answer];
     };
 
     game($generateQuestionAndAnswer, DESCRIPTION);

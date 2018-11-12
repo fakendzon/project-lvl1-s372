@@ -9,8 +9,10 @@ const DESCRIPTION = "Balance the given number.";
 function run()
 {
     $generateQuestionAndAnswer = function () {
-        $num = rand(1, 10000);
-        return [$num, toBalance($num)];
+        $verifiableNumber = rand(1, 10000);
+        $answer           = toBalance($verifiableNumber);
+
+        return [$verifiableNumber, $answer];
     };
 
     game($generateQuestionAndAnswer, DESCRIPTION);
