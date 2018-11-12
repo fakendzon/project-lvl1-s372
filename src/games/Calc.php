@@ -5,18 +5,16 @@ namespace BrainGames\Games\Calc;
 use function BrainGames\Cli\game;
 
 const DESCRIPTION = "What is the result of the expression?";
-const OPERATIONS  = ['-' => 'minus', '+' => 'plus', '*' => 'multiplication'];
+const OPERATIONS  = ['-', '+', '*'];
 
 function run()
 {
     $generateQuestionAndAnswer = function () {
-        $num1 = rand(1, 10);
-        $num2 = rand(1, 10);
-
-        $previewOperations = array_keys(OPERATIONS);
-        $operation         = $previewOperations[array_rand($previewOperations)];
-        $question          = "{$num1} {$operation} {$num2}";
-        $rightAnswer       = call_user_func(__NAMESPACE__ . '\\' . OPERATIONS[$operation], $num1, $num2);
+        $num1        = rand(1, 10);
+        $num2        = rand(1, 10);
+        $operation   = OPERATIONS[array_rand(OPERATIONS)];
+        $question    = "{$num1} {$operation} {$num2}";
+        $rightAnswer = calculateAnswer($operation, $num1, $num2);
 
         return [$question, $rightAnswer];
     };
@@ -24,17 +22,14 @@ function run()
     game($generateQuestionAndAnswer, DESCRIPTION);
 }
 
-function minus($num1, $num2)
+function calculateAnswer($operation, $num1, $num2)
 {
-    return $num1 - $num2;
-}
-
-function plus($num1, $num2)
-{
-    return $num1 + $num2;
-}
-
-function multiplication($num1, $num2)
-{
-    return $num1 * $num2;
+    switch ($operation) {
+        case '+':
+            return $num1 + $num2;
+        case '-':
+            return $num1 - $num2;
+        case '*':
+            return $num1 * $num2;
+    }
 }
