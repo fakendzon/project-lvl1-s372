@@ -8,8 +8,13 @@ const ANSWER_NEGATIVE = 'no';
 function getProperties($num)
 {
     return [
-        'isPrime' => isPrime($num) ? ANSWER_POSITIVE : ANSWER_NEGATIVE,
-        'isEven'  => isEven($num)
+        'isPrime'  => function () use ($num) {
+            return isPrime($num);
+        },
+
+        'isEven'  => function () use ($num) {
+            return isEven($num);
+        }
     ];
 }
 

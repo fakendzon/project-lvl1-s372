@@ -15,7 +15,7 @@ function run()
         $num = rand(1, 100);
         return [
             $num,
-            getProperties($num)['isPrime'] ? ANSWER_POSITIVE : ANSWER_NEGATIVE
+            getProperties($num)['isPrime']() ? ANSWER_POSITIVE : ANSWER_NEGATIVE
         ];
     };
 
